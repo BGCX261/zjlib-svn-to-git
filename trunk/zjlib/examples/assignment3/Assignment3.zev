@@ -1,0 +1,32 @@
+<Z-EVES-GUI-State version="1" index="9"><textItem history="2" location="gui::1"><zed-box location="gui::1">[PLAYER, NAME]</zed-box></textItem
+><textItem history="3" location="gui::2"><schema-box location="gui::2">Team<decl-part/> players: <word style="roman"/>iseq<word/> PLAYER
+name: NAME</schema-box></textItem
+><textItem history="4" location="gui::3"><schema-box location="gui::3">League<decl-part/>  teams: <word style="roman"/>iseq<word/> Team<ax-part/>&forall; i, j: 1..#teams &bullet; (teams(i)).players &cap; (teams(j)).players = &empty;
+&forall; i, j: 1..#teams &bullet; (teams(i)).name = (teams(j)).name &hArr; teams(i) = teams(j)</schema-box></textItem
+><textItem history="5" location="gui::4"><schema-box location="gui::4">AddTeam<decl-part/>    &Delta;League
+team?: Team<ax-part/>    &forall; i : 1..#teams  &bullet; (teams(i) ). players &cap; team? . players = &empty; &wedge; teams(i) &neq; team?
+teams' = teams &frown; &lang;team?&rang;</schema-box></textItem
+><textItem history="6" location="gui::5"><schema-box location="gui::5">DeleteTeam<decl-part/>      &Delta;League
+team?: Team<ax-part/>      &exists; pre, post: <word style="roman"/>iseq<word/> Team | teams = pre &frown; &lang;team?&rang; &frown;post &bullet; teams'  = pre &frown; post</schema-box></textItem
+><textItem history="7" location="gui::7"><schema-box location="gui::7">DeletePlayer<decl-part/>     &Delta;League
+player?: PLAYER<ax-part/>   &exists; t, n: Team;tpre, tpost: <word style="roman"/>iseq<word/> Team; ppre, ppost: <word style="roman"/>iseq<word/> PLAYER | 
+teams = tpre &frown; &lang;t&rang;&frown; tpost &wedge; t.players = ppre &frown; &lang;player?&rang; &frown; ppost &wedge; n.name = t.name &wedge; n.players = ppre &frown; ppost &bullet;
+teams' = tpre &frown;&lang;n&rang;&frown; tpost
+</schema-box></textItem
+><textItem history="8" location="gui::8"><schema-box location="gui::8">GetPlayerCountForTeam<decl-part/>  &Delta;League
+teamname: NAME
+count!: &Nopf;<ax-part/> &exists; i: 1.. #teams | (teams i).name = teamname &bullet; count! = #(teams i).players
+</schema-box></textItem
+><textItem history="9" location="gui::9"><schema-box location="gui::9">GetPlayerCount<decl-part/>       &Delta;League
+count!: &Nopf;<ax-part/>       count! = 
+# { p: PLAYER;
+i: 1..#teams |
+&lang;p&rang; <word style="roman"/>in<word/> (teams i) . players &bullet;
+p }</schema-box></textItem
+><script name="GetPlayerCountForTeam$domainCheck"></script
+><script name="League$domainCheck"></script
+><script name="DeleteTeam$domainCheck"></script
+><script name="GetPlayerCount$domainCheck"></script
+><script name="DeletePlayer$domainCheck"></script
+><script name="AddTeam$domainCheck"></script
+></Z-EVES-GUI-State>

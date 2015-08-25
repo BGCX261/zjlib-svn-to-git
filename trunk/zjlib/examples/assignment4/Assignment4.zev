@@ -1,0 +1,81 @@
+<Z-EVES-GUI-State version="1" index="14"><textItem history="2" location="gui::2"><zed-box location="gui::2">[UNIVERSITY,TEAM,PLAYER]</zed-box></textItem
+><textItem history="3" location="gui::3"><schema-box location="gui::3">Universe<decl-part/>  universities: &Popf; UNIVERSITY
+teams: &Popf; TEAM
+players: &Popf; PLAYER
+uniteams: UNIVERSITY &lrarr; TEAM
+uniplayers: UNIVERSITY &lrarr; PLAYER
+teamplayers: TEAM &lrarr; PLAYER
+games: TEAM &lrarr; TEAM<ax-part/>  <word style="roman"/>dom<word/> uniteams &subeq; universities
+<word style="roman"/>ran<word/> uniteams = teams
+&forall;team: <word style="roman"/>ran<word/> uniteams &bullet; # (uniteams &vrtri; {team}) = 1
+<word style="roman"/>dom<word/> uniplayers &subeq; universities
+<word style="roman"/>ran<word/> uniplayers = players
+&forall;player: <word style="roman"/>ran<word/> uniplayers &bullet; # (uniplayers &vrtri; {player}) = 1
+teamplayers &subeq; uniteams &suptilde; &fatsemi; uniplayers
+<word style="roman"/>dom<word/> games &subeq; teams
+<word style="roman"/>ran<word/> games &subeq; teams
+games &cap; (uniteams &suptilde; &fatsemi; uniteams) = &empty;
+games&suptilde;&cap; games = &empty;</schema-box></textItem
+><textItem history="4" location="gui::4"><schema-box location="gui::4">addPlayerToUni<decl-part/> &Delta;Universe
+player?: PLAYER
+uni? : UNIVERSITY<ax-part/> player? &notin; players
+uni? &isin; universities
+players' = players &cup; {player?}
+uniplayers' = uniplayers &cup; {uni? &rtarr; player?}</schema-box></textItem
+><textItem history="5" location="gui::5"><schema-box location="gui::5">AddPlayerToTeam<decl-part/> &Delta;Universe
+player?: PLAYER
+team?: TEAM<ax-part/> team? &rtarr; player? &isin; uniteams &suptilde; &fatsemi; uniplayers
+team? &rtarr; player? &notin; teamplayers
+teamplayers' = teamplayers &cup; {team? &rtarr; player?}</schema-box></textItem
+><textItem history="6" location="gui::6"><schema-box location="gui::6">  AddTeamToUni<decl-part/>  &Delta; Universe
+team? : TEAM
+uni? : UNIVERSITY<ax-part/>  team? &notin; teams
+uni? &isin; universities
+teams' = teams &cup; {team?}
+uniteams' = uniteams &cup; {uni? &rtarr; team?}</schema-box></textItem
+><textItem history="7" location="gui::7"><schema-box location="gui::7">AddGame<decl-part/> &Delta;Universe
+team1?: TEAM
+team2?: TEAM<ax-part/> team1? &isin; teams
+team2? &isin; teams
+team1? &rtarr; team2? &notin; uniteams &suptilde; &fatsemi; uniteams
+team1? &rtarr; team2? &notin; games&suptilde;&cup;games
+games' = games &cup; {(team1? &rtarr; team2?)}</schema-box></textItem
+><textItem history="8" location="gui::8"><schema-box location="gui::8"> DeletePlayerFromTeam <decl-part/>  &Delta;Universe
+player?:PLAYER
+team?:TEAM<ax-part/>  team? &rtarr; player? &isin; teamplayers
+teamplayers' = teamplayers \ {team? &rtarr; player?}
+</schema-box></textItem
+><textItem history="9" location="gui::9"><schema-box location="gui::9">  DeletePlayerFromUni<decl-part/>&Delta;Universe
+player? : PLAYER
+uni? : UNIVERSITY
+<ax-part/>uni? &rtarr; player? &isin; uniplayers
+players' = players \ {player?}
+uniplayers' = uniplayers &vrtrib; {player?}
+teamplayers' = teamplayers &vrtrib; {player?}
+</schema-box></textItem
+><textItem history="10" location="gui::10"><schema-box location="gui::10">DeleteTeamFromUniversity<decl-part/> &Delta;Universe
+team?: TEAM
+uni?: UNIVERSITY<ax-part/> uni? &rtarr; team? &isin; uniteams
+teams' = teams \ {team?}
+uniteams' = uniteams &vrtrib; {team?}
+teamplayers' = {team?} &vltrib; teamplayers
+games' = ({team?} &vltrib; games) &cap; (games &vrtrib; {team?})</schema-box></textItem
+><textItem history="11" location="gui::11"><schema-box location="gui::11"> DeleteGame <decl-part/> &Delta;Universe
+team1?:TEAM
+team2?:TEAM
+
+<ax-part/> team1? &rtarr; team2? &isin; games&suptilde;&cup;games
+games' =games \ {team1?&rtarr; team2?, team2? &rtarr; team1?}</schema-box></textItem
+><textItem history="12" location="gui::12"><schema-box location="gui::12">  ReplacePlayerInTeam<decl-part/>&Delta;Universe
+oldplayer?:PLAYER
+newplayer?:PLAYER
+team?:TEAM<ax-part/>team? &rtarr;oldplayer? &isin; teamplayers
+team? &rtarr; newplayer? &notin; teamplayers
+team? &rtarr; newplayer? &isin;uniteams&suptilde;&fatsemi;uniplayers
+teamplayers' = (teamplayers &cup; {team? &rtarr; newplayer?} )\ {team? &rtarr; oldplayer?}</schema-box></textItem
+><textItem history="13" location="gui::14"><schema-box location="gui::14"> TeamCountForPlayer<decl-part/>&Delta;Universe
+player?:PLAYER
+count!:&Nopf;<ax-part/>count! = #(teamplayers &vrtri; {player?})</schema-box></textItem
+><script name="Universe$domainCheck"></script
+><script name="TeamCountForPlayer$domainCheck"></script
+></Z-EVES-GUI-State>

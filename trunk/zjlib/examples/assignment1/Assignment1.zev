@@ -1,0 +1,34 @@
+<Z-EVES-GUI-State version="1" index="11"><textItem history="2" location="gui::5"><zed-box location="gui::5">[ORANGE, PLUM]</zed-box></textItem
+><textItem history="3" location="gui::3"><schema-box location="gui::3"> FloridaFruits <decl-part/>  roranges: &Popf; ORANGE
+rplums: &Popf; PLUM
+orangeprice: &Nopf;
+plumprice: &Nopf;</schema-box></textItem
+><textItem location="gui::8"><schema-box location="gui::8">  InitFloridaFruits<decl-part/> FloridaFruits<ax-part/> roranges = &empty;
+rplums = &empty;
+orangeprice = 3
+plumprice = 2</schema-box><schemadef><schname kind="schema" ident="InitFloridaFruits"></schname><decpart><schname kind="schema" ident="FloridaFruits"></schname></decpart><axpart><relchain><name kind="expr" ident="roranges"></name><name class="inrel" kind="expr" ident="="></name><name kind="expr" ident="&empty;"></name></relchain><relchain><name kind="expr" ident="rplums"></name><name class="inrel" kind="expr" ident="="></name><name kind="expr" ident="&empty;"></name></relchain><relchain><name kind="expr" ident="orangeprice"></name><name class="inrel" kind="expr" ident="="></name><number value="3"/></relchain><relchain><name kind="expr" ident="plumprice"></name><name class="inrel" kind="expr" ident="="></name><number value="2"/></relchain></axpart></schemadef></textItem
+><textItem history="4" location="gui::4"><schema-box location="gui::4"> FestivalFoods <decl-part/>toranges: &Popf; ORANGE
+tplums:&Popf; PLUM</schema-box></textItem
+><textItem location="gui::9"><schema-box location="gui::9">  InitFestivalFoods<decl-part/>FestivalFoods<ax-part/>toranges = &empty;
+tplums = &empty;</schema-box><schemadef><schname kind="schema" ident="InitFestivalFoods"></schname><decpart><schname kind="schema" ident="FestivalFoods"></schname></decpart><axpart><relchain><name kind="expr" ident="toranges"></name><name class="inrel" kind="expr" ident="="></name><name kind="expr" ident="&empty;"></name></relchain><relchain><name kind="expr" ident="tplums"></name><name class="inrel" kind="expr" ident="="></name><name kind="expr" ident="&empty;"></name></relchain></axpart></schemadef></textItem
+><textItem history="5" location="gui::6"><schema-box location="gui::6">BuyOranges  <decl-part/>  &Delta; FloridaFruits
+&Delta; FestivalFoods
+oranges? :&Popf; ORANGE
+price!: &Nopf;<ax-part/>  oranges? &subeq; roranges
+roranges' = roranges \ oranges?
+toranges' = toranges &cup; oranges?
+price! = orangeprice * #oranges?</schema-box></textItem
+><textItem history="6" location="gui::7"><schema-box location="gui::7">BuyPlums<decl-part/>  &Delta;FloridaFruits
+&Delta;FestivalFoods
+plums?: &Popf; PLUM
+price!: &Nopf;<ax-part/>  plums? &subeq; rplums
+rplums' = rplums \ plums?
+tplums' = tplums &cup; plums?
+price! = plumprice * # plums?</schema-box></textItem
+><textItem history="7" location="gui::10"><schema-box location="gui::10"> SetOrangePrice <decl-part/>&Delta;FloridaFruits
+price? : &Nopf;<ax-part/>orangeprice' = price?</schema-box></textItem
+><textItem history="8" location="gui::11"><schema-box location="gui::11"> SetPlumPrice <decl-part/>   &Delta;FloridaFruits
+price! : &Nopf;<ax-part/>  plumprice ' = price!</schema-box></textItem
+><script name="BuyOranges$domainCheck"></script
+><script name="BuyPlums$domainCheck"></script
+></Z-EVES-GUI-State>

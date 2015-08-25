@@ -1,0 +1,5 @@
+addTeam "My Team"
+deleteTeam "My Team"
+deletePlayer Thomas
+getPlayerCountForTeam Lions
+getPlayerCount

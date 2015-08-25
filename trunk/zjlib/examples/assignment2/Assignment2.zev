@@ -1,0 +1,24 @@
+<Z-EVES-GUI-State version="1" index="9"><textItem history="2" location="gui::1"><zed-box location="gui::1">[PLAYER, NAME]</zed-box></textItem
+><textItem history="3" location="gui::2"><schema-box location="gui::2"> Team <decl-part/> players : &Popf; PLAYER
+name: NAME</schema-box></textItem
+><textItem history="4" location="gui::3"><schema-box location="gui::3">League<decl-part/>  teams: &Popf; Team<ax-part/>  &forall;t1, t2: teams | t1 &neq; t2 &bullet; t1 . players &cap; t2 . players = &empty;
+&forall;t1, t2: teams &bullet; t1 . name = t2 . name &hArr; t1 = t2</schema-box></textItem
+><textItem location="gui::4"><schema-box location="gui::4">AddTeam<decl-part/> &Delta;League
+team?: Team<ax-part/> &forall;t: teams &bullet; t . players &cap; team? . players = &empty;
+team? &notin; teams
+teams' = teams &cup; {team?}</schema-box></textItem
+><textItem location="gui::5"><schema-box location="gui::5"> DeleteTeam <decl-part/>&Delta;League
+team? : Team<ax-part/>teams' = teams \ { team? }</schema-box><schemadef><schname kind="schema" ident="DeleteTeam"></schname><decpart><schname kind="schema" ident="League" prefix="&Delta;"></schname><decl><namelist><name kind="expr" ident="team?"></name></namelist><name kind="expr" ident="Team"></name></decl></decpart><axpart><relchain><name kind="expr" ident="teams'"></name><name class="inrel" kind="expr" ident="="></name><op kind="expr" type="inop"><name class="infun" kind="expr" ident="\"></name><name kind="expr" ident="teams"></name><display type="set"><name kind="expr" ident="team?"></name></display></op></relchain></axpart></schemadef></textItem
+><textItem location="gui::7"><schema-box location="gui::7">DeletePlayer<decl-part/> &Delta;League
+player?: PLAYER<ax-part/> &exists;t: teams | player? &isin; t . players
+   &bullet; teams'
+       = teams \ {t}
+         &cup; { n: Team
+               | n . name = t . name
+                 &wedge; n . players = t . players \ {player?} }</schema-box></textItem
+><textItem location="gui::8"><schema-box location="gui::8"> GetPlayerCountForTeam <decl-part/>&Delta;League
+teamname : NAME
+count! : &Nopf;<ax-part/>&exists; t: teams | t.name = teamname &bullet; count! = #t.players</schema-box><schemadef><schname kind="schema" ident="GetPlayerCountForTeam"></schname><decpart><schname kind="schema" ident="League" prefix="&Delta;"></schname><decl><namelist><name kind="expr" ident="teamname"></name></namelist><name kind="expr" ident="NAME"></name></decl><decl><namelist><name kind="expr" ident="count!"></name></namelist><name kind="expr" ident="&Nopf;"></name></decl></decpart><axpart><binder kind="pred" type="forsome"><decpart><decl><namelist><name kind="expr" ident="t"></name></namelist><name kind="expr" ident="teams"></name></decl></decpart><predpart><relchain><op kind="expr" type="inop"><name class="other" kind="expr" ident="."></name><name kind="expr" ident="t"></name><name kind="expr" ident="name"></name></op><name class="inrel" kind="expr" ident="="></name><name kind="expr" ident="teamname"></name></relchain></predpart><relchain><name kind="expr" ident="count!"></name><name class="inrel" kind="expr" ident="="></name><application><name kind="expr" ident="#"></name><op kind="expr" type="inop"><name class="other" kind="expr" ident="."></name><name kind="expr" ident="t"></name><name kind="expr" ident="players"></name></op></application></relchain></binder></axpart></schemadef></textItem
+><textItem location="gui::9"><schema-box location="gui::9"> GetPlayerCount <decl-part/>  &Delta;League
+count! : &Nopf;<ax-part/>  count! = #{p: PLAYER ; t:teams | p &isin; t.players &bullet; p}</schema-box><schemadef><schname kind="schema" ident="GetPlayerCount"></schname><decpart><schname kind="schema" ident="League" prefix="&Delta;"></schname><decl><namelist><name kind="expr" ident="count!"></name></namelist><name kind="expr" ident="&Nopf;"></name></decl></decpart><axpart><relchain><name kind="expr" ident="count!"></name><name class="inrel" kind="expr" ident="="></name><application><name kind="expr" ident="#"></name><binder kind="expr" type="set"><decpart><decl><namelist><name kind="expr" ident="p"></name></namelist><name kind="expr" ident="PLAYER"></name></decl><decl><namelist><name kind="expr" ident="t"></name></namelist><name kind="expr" ident="teams"></name></decl></decpart><predpart><relchain><name kind="expr" ident="p"></name><name class="other" kind="expr" ident="&isin;"></name><op kind="expr" type="inop"><name class="other" kind="expr" ident="."></name><name kind="expr" ident="t"></name><name kind="expr" ident="players"></name></op></relchain></predpart><name kind="expr" ident="p"></name></binder></application></relchain></axpart></schemadef></textItem
+></Z-EVES-GUI-State>

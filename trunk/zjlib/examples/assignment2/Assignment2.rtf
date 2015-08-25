@@ -1,0 +1,69 @@
+{\rtf\ansi{\fonttbl
+{\f0\froman Times New Roman;}
+{\f1\ftech Symbol;}
+{\f2\fnil \fprq2 \fcharset2 Zed;}}
+\plain \keep 
+\par {\f0 [}{\f0 \i PLAYER}{\f0 ,}{\f0 \i  NAME}{\f0 ]
+}\line
+\par {\f2 \'c8_}{\f0 \i Team }{\f2 ____________________________________\line
+\'ae}{\f0 \i players: }{\f2 P}{\f0 \i  PLAYER\line
+}{\f2 \'ae}{\f0 \i name: NAME\line
+}{\f2 \'d0_______________________________________\line
+
+}
+\par {\f2 \'c8_}{\f0 \i League }{\f2 ___________________________________\line
+\'ae}{\f0 \i teams: }{\f2 P}{\f0 \i  Team\line
+}{\f2 \'c7_______________\line
+\'aeA}{\f0 \i t1, t2: teams }{\f2 | }{\f0 \i t1 }{\f2 \'eb}{\f0 \i  t2 }{\f2 \'a5 }{\f0 \i t1 . players }{\f2 \fs18 I}{\f0 \i  t2 . players = }{\f2 0}{\f0 \i \line
+}{\f2 \'aeA}{\f0 \i t1, t2: teams }{\f2 \'a5 }{\f0 \i t1 . name = t2 . name }{\f2 \'db}{\f0 \i  t1 = t2\line
+}{\f2 \'d0_______________________________________\line
+
+}
+\par {\f2 \'c8_}{\f0 \i AddTeam}{\f2 ___________________________________\line
+\'ae}{\f0 \i  }{\f1 D}{\f0 \i League\line
+}{\f2 \'ae}{\f0 \i team?: Team\line
+}{\f2 \'c7_______________\line
+\'ae}{\f0 \i  }{\f2 A}{\f0 \i t: teams }{\f2 \'a5}{\f0 \i  t . players }{\f2 \fs18 I}{\f0 \i  team? . players = }{\f2 0}{\f0 \i \line
+}{\f2 \'ae}{\f0 \i team? }{\f2 \'e4}{\f0 \i  teams\line
+}{\f2 \'ae}{\f0 \i teams' = teams }{\f2 \fs18 U}{\f0 \i  \{team?\}\line
+}{\f2 \'d0_______________________________________\line
+
+}
+\par {\f2 \'c8_}{\f0 \i DeleteTeam }{\f2 _________________________________\line
+\'ae}{\f0 \i }{\f1 D}{\f0 \i League\line
+}{\f2 \'ae}{\f0 \i team?: Team\line
+}{\f2 \'c7_______________\line
+\'ae}{\f0 \i teams' = teams \\ }{\f2 \{}{\f0 \i team?}{\f2 \}\line
+\'d0_______________________________________\line
+
+}
+\par {\f2 \'c8_}{\f0 \i DeletePlayer }{\f2 ________________________________\line
+\'ae}{\f0 \i  }{\f1 D}{\f0 \i League\line
+}{\f2 \'ae}{\f0 \i player?: PLAYER\line
+}{\f2 \'c7_______________\line
+\'ae}{\f0 \i  }{\f2 E}{\f0 \i t: teams | player? }{\f2 e}{\f0 \i  t . players\line
+}{\f2 \'ae}{\f0 \i    }{\f2 \'a5}{\f0 \i  teams'\line
+}{\f2 \'ae}{\f0 \i        = teams \\ \{t\}\line
+}{\f2 \'ae}{\f0 \i          }{\f2 \fs18 U}{\f0 \i  \{ n: Team\line
+}{\f2 \'ae}{\f0 \i                | n . name = t . name\line
+}{\f2 \'ae}{\f0 \i                  }{\f2 \'a6}{\f0 \i  n . players = t . players \\ \{player?\} \}\line
+}{\f2 \'d0_______________________________________\line
+
+}
+\par {\f2 \'c8_}{\f0 \i GetPlayerCountForTeam}{\f2 ____________________________\line
+\'ae}{\f0 \i }{\f1 D}{\f0 \i League\line
+}{\f2 \'ae}{\f0 \i teamname: NAME\line
+}{\f2 \'ae}{\f0 \i count!: }{\f2 N}{\f0 \i \line
+}{\f2 \'c7_______________\line
+\'aeE}{\f0 \i t: teams }{\f2 | }{\f0 \i t . name = teamname }{\f2 \'a5 }{\f0 \i count! = # t . players\line
+}{\f2 \'d0_______________________________________\line
+
+}
+\par {\f2 \'c8_}{\f0 \i GetPlayerCount }{\f2 _______________________________\line
+\'ae}{\f0 \i }{\f1 D}{\f0 \i League\line
+}{\f2 \'ae}{\f0 \i count!: }{\f2 N}{\f0 \i \line
+}{\f2 \'c7_______________\line
+\'ae}{\f0 \i count! = # }{\f2 \{ }{\f0 \i p: PLAYER; t: teams }{\f2 | }{\f0 \i p }{\f2 e}{\f0 \i  t . players }{\f2 \'a5 }{\f0 \i p}{\f2  \}\line
+\'d0_______________________________________\line
+
+}}
